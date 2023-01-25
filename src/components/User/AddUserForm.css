@@ -1,0 +1,31 @@
+form {
+  margin: 1rem 0;
+}
+
+form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  font: inherit;
+  line-height: 1.5rem;
+  padding: 0 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+form input:focus {
+  outline: none;
+  background: #fad0ec;
+  border-color: #8b005d;
+}
+
+.errormessage{
+  color: red;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
