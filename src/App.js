@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import AddUserForm from "./components/User/AddUserForm";
 import CourseGoalList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
 import CourseInput from "./components/CourseGoals/CourseInput/CourseInput";
-import "./App.css";
 import UserList from "./components/User/UserList";
+import Card from './components/UI/Card/Card';
+import CardA from './components/UI/CardA/CardA';
+
 
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
@@ -51,16 +53,16 @@ const App = () => {
   };
   return (
     <div>
-      <section id="user-form">
+      <Card>
         <AddUserForm onAddUser={addUserHundler} />
-      </section>
-      <section id="users">
+      </Card>
+      <CardA>
         <UserList items={users} />
-      </section>
-      <section id="goal-form">
+      </CardA>
+      <Card>
         <CourseInput onAddGoal={addGoalHandler} />
-      </section>
-      <section id="goals">
+      </Card>
+      <CardA>
         {content}
         {/* {courseGoals.length > 0 && (
           <CourseGoalList
@@ -69,7 +71,7 @@ const App = () => {
           />
         ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
         } */}
-      </section>
+      </CardA>
     </div>
   );
 };
