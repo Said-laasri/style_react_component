@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import AddUserForm from "./components/User/AddUserForm";
+import AddUserForm from "./components/User/UserForm/AddUserForm";
 import CourseGoalList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
 import CourseInput from "./components/CourseGoals/CourseInput/CourseInput";
-import UserList from "./components/User/UserList";
+import UserList from "./components/User/UserList/UserList";
 import Card from './components/UI/Card/Card';
 import CardA from './components/UI/CardA/CardA';
 

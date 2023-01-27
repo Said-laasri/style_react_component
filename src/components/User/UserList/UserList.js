@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleUser from './SingleUser';
+import SingleUser from '../UserOne/SingleUser';
 import './UserList.css';
 
 const UserList = (props) => {
