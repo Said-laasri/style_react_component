@@ -1,0 +1,17 @@
+.userList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.userList li {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(209, 93, 209, 0.26);
+  text-align: center;
+  font-size: larger;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #8b005d;;
+  color: rgb(255, 243, 243);
+}

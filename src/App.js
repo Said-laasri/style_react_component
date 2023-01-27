@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import AddUserForm from "./components/User/UserForm/AddUserForm";
+import CourseGoalList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
+import CourseInput from "./components/CourseGoals/CourseInput/CourseInput";
+import UserList from "./components/User/UserList/UserList";
+import Card from './components/UI/Card/Card';
+import CardA from './components/UI/CardA/CardA';
 
-import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
-import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
-import './App.css';
 
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
-    { text: 'Do all exercises!', id: 'g1' },
-    { text: 'Finish the course!', id: 'g2' }
+    { text: "Do all exercises!", id: "g1" },
+    { text: "Finish the course!", id: "g2" },
   ]);
 
-  const addGoalHandler = enteredText => {
-    setCourseGoals(prevGoals => {
+  const [users, setUsers] = useState([{ name: "Max", age: 28, id: "u1" }]);
+
+  const addGoalHandler = (enteredText) => {
+    setCourseGoals((prevGoals) => {
       const updatedGoals = [...prevGoals];
       updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
       return updatedGoals;
     });
   };
 
-  const deleteItemHandler = goalId => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
+  const deleteItemHandler = (goalId) => {
+    setCourseGoals((prevGoals) => {
+      const updatedGoals = prevGoals.filter((goal) => goal.id !== goalId);
       return updatedGoals;
     });
   };
 
   let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+    <p style={{ textAlign: "center" }}>No goals found. Maybe add one?</p>
   );
 
   if (courseGoals.length > 0) {
@@ -35,12 +40,29 @@ const App = () => {
     );
   }
 
+  const addUserHundler = (userName, userAge) => {
+    setUsers((prevUsers) => {
+      const updatedUsers = [...prevUsers];
+      updatedUsers.unshift({
+        name: userName,
+        age: userAge,
+        id: Math.random().toString(),
+      });
+      return updatedUsers;
+    });
+  };
   return (
     <div>
-      <section id="goal-form">
+      <Card>
+        <AddUserForm onAddUser={addUserHundler} />
+      </Card>
+      <CardA>
+        <UserList items={users} />
+      </CardA>
+      <Card>
         <CourseInput onAddGoal={addGoalHandler} />
-      </section>
-      <section id="goals">
+      </Card>
+      <CardA>
         {content}
         {/* {courseGoals.length > 0 && (
           <CourseGoalList
@@ -49,7 +71,7 @@ const App = () => {
           />
         ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
         } */}
-      </section>
+      </CardA>
     </div>
   );
 };
