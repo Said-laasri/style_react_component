@@ -13,7 +13,7 @@ const App = () => {
     { text: "Finish the course!", id: "g2" },
   ]);
 
-  const [users, setUsers] = useState([{ name: "Max", age: 28, id: "u1" }]);
+  const [users, setUsers] = useState([{ name: "Max", age: 28, id: `${Math.random()}t` }]);
 
   const addGoalHandler = (enteredText) => {
     setCourseGoals((prevGoals) => {
