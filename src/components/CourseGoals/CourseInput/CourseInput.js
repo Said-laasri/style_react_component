@@ -4,7 +4,7 @@ import Button from "../../UI/Button/Button";
 
 const FormControl = styled.div`
   margin: 0.5rem 0;
-
+ 
   & label {
     font-weight: bold;
     display: block;
@@ -57,6 +57,7 @@ const CourseInput = (props) => {
       setIsValid(false);
       return;
     }
+    setEnteredValue("");
     props.onAddGoal(enteredValue);
   };
 
@@ -67,7 +68,7 @@ const CourseInput = (props) => {
       <FormControl invalid={!isValid}>
         <label>Course Goal</label>
 
-        <input type="text" onChange={goalInputChangeHandler} />
+        <input value={enteredValue} type="text" onChange={goalInputChangeHandler} />
       </FormControl>
       <Button type="submit">Add Goal</Button>
     </form>
