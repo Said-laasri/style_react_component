@@ -4,7 +4,6 @@ import CourseInput from "./CourseInput/CourseInput";
 import Card from "../UI/Card/Card";
 import CardA from "../UI/CardA/CardA";
 
-
 const Goal = (props) => {
   const [courseGoals, setCourseGoals] = useState([
     { text: "Do all exercises!", id: `${Math.random(1, 100)}` },
