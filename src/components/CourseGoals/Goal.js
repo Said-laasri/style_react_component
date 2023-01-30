@@ -5,14 +5,14 @@ import Card from "../UI/Card/Card";
 import CardA from "../UI/CardA/CardA";
 
 const Goal = (props) => {
-  const [courseGoals, setCourseGoals] = useState([
-    { text: "Do all exercises!", id: `${Math.random(1, 100)}` },
-  ]);
+  const [courseGoals, setCourseGoals] = useState([]);
+
   const addGoalHandler = (enteredText) => {
     setCourseGoals((prevGoals) => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
-      return updatedGoals;
+      return [
+        ...prevGoals,
+        { text: enteredText, id: Math.random().toString() },
+      ];
     });
   };
   const deleteItemHandler = (goalId) => {
