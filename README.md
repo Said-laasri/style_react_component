@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project i work on User and Goals Forms with styled component and Modal error
 
 ## Available Scripts
 
