@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ErrorModal from "../../UI/Error/ErroModal";
 import Button from "../../UI/Button/Button";
+import Wrapper from "../../Helpers/Wrapper";
 import "./AddUserForm.css";
 
 const AddUserForm = (props) => {
@@ -48,39 +49,45 @@ const AddUserForm = (props) => {
 
   const errorHandler = () => {
     setError(null);
-   };
+  };
 
   return (
-    <>
-    {error && <ErrorModal title={error.title} message={error.message}  onConfirm={errorHandler}/>}
-    <form onSubmit={formSubmitHandler}>
-      <label style={{ color: !isValid ? "red" : "#000" }} htmlFor="username">
-        Username
-      </label>
-      <input
-        style={{
-          backgroundColor: !isValid ? "rgb(218, 118, 105)" : "transparent",
-        }}
-        type="text"
-        id="username"
-        value={userName}
-        onChange={userNameChangeHandler}
-      />
-      <label style={{ color: !isValid ? "red" : "#000" }} htmlFor="age">
-        Age (Years)
-      </label>
-      <input
-        style={{
-          backgroundColor: !isValid ? "rgb(218, 118, 105)" : "transparent",
-        }}
-        type="number"
-        id="age"
-        value={userAge}
-        onChange={userAgeChangeHandler}
-      />
-      <Button type="submit">Add User</Button>
-    </form>
-    </>
+    <Wrapper>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
+      <form onSubmit={formSubmitHandler}>
+        <label style={{ color: !isValid ? "red" : "#000" }} htmlFor="username">
+          Username
+        </label>
+        <input
+          style={{
+            backgroundColor: !isValid ? "rgb(218, 118, 105)" : "transparent",
+          }}
+          type="text"
+          id="username"
+          value={userName}
+          onChange={userNameChangeHandler}
+        />
+        <label style={{ color: !isValid ? "red" : "#000" }} htmlFor="age">
+          Age (Years)
+        </label>
+        <input
+          style={{
+            backgroundColor: !isValid ? "rgb(218, 118, 105)" : "transparent",
+          }}
+          type="number"
+          id="age"
+          value={userAge}
+          onChange={userAgeChangeHandler}
+        />
+        <Button type="submit">Add User</Button>
+      </form>
+    </Wrapper>
   );
 };
 
