@@ -1,32 +1,38 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ErrorModal from "../../UI/Error/ErroModal";
 import Button from "../../UI/Button/Button";
 import Wrapper from "../../Helpers/Wrapper";
 import "./AddUserForm.css";
 
 const AddUserForm = (props) => {
-  const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState("");
+  // const [userName, setUserName] = useState("");
+  // const [userAge, setUserAge] = useState("");
+  const userName = useRef();
+  const userAge = useRef();
+  const { onAddUser } = props;
   const [isValid, setIsValid] = useState(true);
   const [error, setError] = useState();
 
-  const userNameChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setIsValid(true);
-    }
-    setUserName(event.target.value);
-  };
-  const userAgeChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setIsValid(true);
-    }
+  // const userNameChangeHandler = (event) => {
 
-    setUserAge(event.target.value);
-  };
+  //   if (event.target.value.trim().length > 0) {
+  //     setIsValid(true);
+  //   }
+  //   setUserName(event.target.value);
+  // };
+  // const userAgeChangeHandler = (event) => {
+  //   if (event.target.value.trim().length > 0) {
+  //     setIsValid(true);
+  //   }
+
+  //   setUserAge(event.target.value);
+  // };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    if (userName.trim().length === 0 || userAge.trim().length === 0) {
+    const enteredName = userName.current.value;
+    const enteredUserAge = userAge.current.value;
+    if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
       setIsValid(false);
       setError({
         title: "Invalid input",
@@ -34,7 +40,7 @@ const AddUserForm = (props) => {
       });
       return;
     }
-    if (userAge < 0) {
+    if (enteredUserAge < 0) {
       setIsValid(false);
       setError({
         title: "Invalid age",
@@ -42,9 +48,11 @@ const AddUserForm = (props) => {
       });
       return;
     }
-    setUserAge("");
-    setUserName("");
-    props.onAddUser(userName, userAge);
+    onAddUser(enteredName, enteredUserAge);
+    // setUserAge("");
+    // setUserName("");
+    userName.current.value = "";
+    userAge.current.value = "";
   };
 
   const errorHandler = () => {
@@ -70,8 +78,9 @@ const AddUserForm = (props) => {
           }}
           type="text"
           id="username"
-          value={userName}
-          onChange={userNameChangeHandler}
+          // value={userName}
+          // onChange={userNameChangeHandler}
+          ref={userName}
         />
         <label style={{ color: !isValid ? "red" : "#000" }} htmlFor="age">
           Age (Years)
@@ -82,8 +91,9 @@ const AddUserForm = (props) => {
           }}
           type="number"
           id="age"
-          value={userAge}
-          onChange={userAgeChangeHandler}
+          // value={userAge}
+          // onChange={userAgeChangeHandler}
+          ref={userAge}
         />
         <Button type="submit">Add User</Button>
       </form>
