@@ -1,12 +1,13 @@
 import Goal from "./components/CourseGoals/Goal";
+import React from "react";
 import User from "./components/User/User";
 
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <User />
       <Goal />
-    </div>
+    </React.Fragment>
   );
 };
 
